@@ -30,8 +30,8 @@ class Przegladarki(models.Model):
 
 class Systemy(models.Model):
 	nazwa = models.CharField(max_length=100, null=False)
-	wersja = models.CharField(max_length=100, null=False)
-	dystrybucja = models.CharField(max_length=100, null=False)
+	wersja = models.CharField(max_length=100)
+	dystrybucja = models.CharField(max_length=100)
 	def __unicode__(self):
 		return self.nazwa+' '+self.wersja 
 

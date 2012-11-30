@@ -67,8 +67,14 @@ def add(request):
 		dist =''
 		for key in web['dist']:
 			dist+= '%s_' % web['dist'][key]
-	
-		sID = updateSystem(web['os']['name'],web['os']['version'], dist)	
+		ver = ''
+		if 'version' in web['os']:
+			ver = web['os']['version']
+		elif 'version' in web['dist']:
+			ver = web['dist']['version']
+		
+			
+		sID = updateSystem(web['os']['name'],'', dist)	
 		wID = insertResults(request.POST)	
 		tID = insertNewTest(sID, bID,wID, request.META['REMOTE_ADDR'])	
 		res = Testy.objects.get(id=tID)
